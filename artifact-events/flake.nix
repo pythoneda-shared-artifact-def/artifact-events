@@ -50,10 +50,10 @@
       let
         org = "pythoneda-shared-artifact";
         repo = "artifact-events";
-        version = "0.0.2";
-        sha256 = "10dj4c8916166425h5p9s6n5hbqvqsgwfd3z0dxlpmq8f8ls96zn";
+        version = "0.0.3";
+        sha256 = "0hviz0ympcn7jky30cyy8xvi47lx609cacbvda5gg46s4sr41rh8";
         pname = "${org}-${repo}";
-        pythonpackage = "pythoneda.shared.artifact.events.artifact";
+        pythonpackage = "pythoneda.shared.artifact.artifact.events";
         package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
         pkgs = import nixos { inherit system; };
         description = "Artifact events";
