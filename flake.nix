@@ -17,10 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 {
-  description = "Artifact events";
+  description = "Nix flake for pythoneda-shared-artifact/artifact-events";
   inputs = rec {
-    nixos.url = "github:NixOS/nixpkgs/24.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
+    nixos.url = "github:NixOS/nixpkgs/24.05";
     pythoneda-shared-artifact-events = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixos.follows = "nixos";
@@ -61,7 +61,7 @@
         maintainers = with pkgs.lib.maintainers;
           [ "rydnr <github@acm-sl.org>" ];
         archRole = "E";
-        space = "D";
+        space = "A";
         layer = "D";
         nixosVersion = builtins.readFile "${nixos}/.version";
         nixpkgsRelease =
@@ -139,25 +139,7 @@
       in rec {
         defaultPackage = packages.default;
         devShells = rec {
-          default = pythoneda-shared-artifact-artifact-events-default;
-          pythoneda-shared-artifact-artifact-events-default =
-            pythoneda-shared-artifact-artifact-events-python312;
-          pythoneda-shared-artifact-artifact-events-python38 =
-            shared.devShell-for {
-              banner = "${
-                  pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38
-                }/bin/banner.sh";
-              extra-namespaces = "";
-              nixpkgs-release = nixpkgsRelease;
-              package =
-                packages.pythoneda-shared-artifact-artifact-events-python38;
-              python = pkgs.python38;
-              pythoneda-shared-pythonlang-banner =
-                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38;
-              pythoneda-shared-pythonlang-domain =
-                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python38;
-              inherit archRole layer org pkgs repo space;
-            };
+          default = pythoneda-shared-artifact-artifact-events-python312;
           pythoneda-shared-artifact-artifact-events-python39 =
             shared.devShell-for {
               banner = "${
@@ -222,19 +204,25 @@
                 pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python312;
               inherit archRole layer org pkgs repo space;
             };
+          pythoneda-shared-artifact-artifact-events-python313 =
+            shared.devShell-for {
+              banner = "${
+                  pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python313
+                }/bin/banner.sh";
+              extra-namespaces = "";
+              nixpkgs-release = nixpkgsRelease;
+              package =
+                packages.pythoneda-shared-artifact-artifact-events-python313;
+              python = pkgs.python313;
+              pythoneda-shared-pythonlang-banner =
+                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python313;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python313;
+              inherit archRole layer org pkgs repo space;
+            };
         };
         packages = rec {
-          default = pythoneda-shared-artifact-artifact-events-default;
-          pythoneda-shared-artifact-artifact-events-default =
-            pythoneda-shared-artifact-artifact-events-python312;
-          pythoneda-shared-artifact-artifact-events-python38 =
-            pythoneda-shared-artifact-artifact-events-for {
-              python = pkgs.python38;
-              pythoneda-shared-artifact-events =
-                pythoneda-shared-artifact-events.packages.${system}.pythoneda-shared-artifact-events-python38;
-              pythoneda-shared-pythonlang-domain =
-                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python38;
-            };
+          default = pythoneda-shared-artifact-artifact-events-python312;
           pythoneda-shared-artifact-artifact-events-python39 =
             pythoneda-shared-artifact-artifact-events-for {
               python = pkgs.python39;
@@ -266,6 +254,14 @@
                 pythoneda-shared-artifact-events.packages.${system}.pythoneda-shared-artifact-events-python312;
               pythoneda-shared-pythonlang-domain =
                 pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python312;
+            };
+          pythoneda-shared-artifact-artifact-events-python313 =
+            pythoneda-shared-artifact-artifact-events-for {
+              python = pkgs.python313;
+              pythoneda-shared-artifact-events =
+                pythoneda-shared-artifact-events.packages.${system}.pythoneda-shared-artifact-events-python313;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python313;
             };
         };
       });
